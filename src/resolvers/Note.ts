@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Arg, Float, Int } from "type-graphql";
+import { Resolver, Query, Mutation, Arg, Float, Int, Authorized } from "type-graphql";
 import { Note } from "../entities/Note";
 import { AppDataSource } from "../database/config";
 import { Student } from "../entities/Student";
@@ -12,7 +12,7 @@ export class NoteResolver {
       relations: ["student", "module"],
     });
   }
-
+  @Authorized()
   @Mutation(() => Note)
   async addNote(
     @Arg("studentId", () => Int) studentId: number,

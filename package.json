@@ -18,6 +18,7 @@
     "dotenv": "^16.5.0",
     "express": "^4.21.2",
     "graphql": "^16.11.0",
+    "jsonwebtoken": "^9.0.2",
     "pdfkit": "^0.17.0",
     "pg": "^8.15.6",
     "reflect-metadata": "^0.2.2",
@@ -25,6 +26,7 @@
     "typeorm": "^0.3.22"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/pdfkit": "^0.13.9",
     "ts-node-dev": "^2.0.0"
   }

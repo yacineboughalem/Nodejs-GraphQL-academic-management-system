@@ -12,6 +12,9 @@ import { generateTranscriptPdf } from "./services/pdf.service";
 import { Note } from "./entities/Note";
 import { Student } from "./entities/Student";
 import { ScheduleResolver } from "./resolvers/Schedule";
+import { AuthResolver } from "./resolvers/Auth";
+import { customAuthChecker } from "./middlewares/AuthChecker";
+import { DashboardResolver } from "./resolvers/Dashbord";
 
 
 const app = express();
@@ -48,12 +51,16 @@ AppDataSource.initialize().then(async () => {
       ModuleResolver, 
       EnrollmentResolver, 
       NoteResolver,
-      ScheduleResolver
+      ScheduleResolver,
+      AuthResolver,
+      DashboardResolver
     ],
+    authChecker: customAuthChecker
   });
 
   const apolloServer = new ApolloServer({
     schema,
+    context: ({req}) => ({req}),
   });
 
   await apolloServer.start();
